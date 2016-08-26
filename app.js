@@ -6,7 +6,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var exphbs  = require('express-handlebars');
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
@@ -19,12 +18,8 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 
 // view engine setup
 
-app.engine('handlebars', exphbs({
-  defaultLayout: 'main',
-  partialsDir: ['views/partials/']
-}));
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'handlebars');
+app.set('view engine', 'ejs');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
